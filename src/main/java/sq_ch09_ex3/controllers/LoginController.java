@@ -1,5 +1,7 @@
 package sq_ch09_ex3.controllers;
 
+import java.util.logging.Logger;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,9 +9,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import space.jbpark.utility.MyUtil;
+
 @Controller
 public class LoginController {
 	
+	private final Logger logger = MyUtil.getLogger(LoginController.class.getName());
+	
+	public LoginController() {
+		super();
+		logger.info("로그인 제어기 생성");
+	}
+
 	@GetMapping("/")
 	public String loginForm() {
 		return "login.html";
