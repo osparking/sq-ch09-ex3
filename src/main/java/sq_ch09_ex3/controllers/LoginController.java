@@ -15,9 +15,11 @@ import space.jbpark.utility.MyUtil;
 public class LoginController {
 	
 	private final Logger logger = MyUtil.getLogger(LoginController.class.getName());
+	private final LoginProcessor loginProcessor;
 	
-	public LoginController() {
+	public LoginController(LoginProcessor loginProcessor) {
 		super();
+		this.loginProcessor = loginProcessor;
 		logger.info("로그인 제어기 생성");
 	}
 
@@ -30,7 +32,7 @@ public class LoginController {
 	public String loginProcessing(@RequestParam String username,
 			@RequestParam String password, Model page, RedirectAttributes redAttr) {
 		
-		if ("natalie".equals(username) && "1234".equals(password)) {
+		if (loginProcessor.processLogin(username, password)) {
 			redAttr.addFlashAttribute("message", "로그인 성공");
 			return "redirect:/";
 		} else {
