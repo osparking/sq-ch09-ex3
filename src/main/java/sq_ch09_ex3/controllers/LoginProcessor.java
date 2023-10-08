@@ -12,14 +12,17 @@ import space.jbpark.utility.MyUtil;
 public class LoginProcessor {
 
 	private final static Logger logger = MyUtil.getLogger(LoginProcessor.class.getName());
+	private final LoginUser loginUser;
 	
-	public LoginProcessor() {
+	public LoginProcessor(LoginUser loginUser) {
 		super();
+		this.loginUser = loginUser;
 		logger.info("로그인 처리기 생성");
 	}
 
 	public boolean processLogin(String username, String password) {
 		if ("natalie".equals(username) && "1234".equals(password)) {
+			loginUser.setUsername(username);
 			return true;
 		} else {
 			return false;
