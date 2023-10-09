@@ -13,5 +13,9 @@ public class LoginCount {
 	public long increase() {
 		return ++loginCount;
 	}
+	
+	public long getCount() {
+		return loginCount;
+	}
 
 }
