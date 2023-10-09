@@ -24,7 +24,6 @@ public class LoginProcessor {
 
 	public boolean processLogin(String username, String password) {
 		loginCount.increase();
-		logger.info("누적 로그인 횟수: " + loginCount.getCount());
 		if ("natalie".equals(username) && "1234".equals(password)) {
 			loginUser.setUsername(username);
 			return true;
