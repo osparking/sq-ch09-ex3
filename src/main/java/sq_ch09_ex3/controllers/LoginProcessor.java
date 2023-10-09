@@ -13,14 +13,18 @@ public class LoginProcessor {
 
 	private final static Logger logger = MyUtil.getLogger(LoginProcessor.class.getName());
 	private final LoginUser loginUser;
+	private final LoginCount loginCount;
 	
-	public LoginProcessor(LoginUser loginUser) {
+	public LoginProcessor(LoginUser loginUser, LoginCount loginCount) {
 		super();
 		this.loginUser = loginUser;
+		this.loginCount = loginCount;
 		logger.info("로그인 처리기 생성");
 	}
 
 	public boolean processLogin(String username, String password) {
+		loginCount.increase();
+		logger.info("누적 로그인 횟수: " + loginCount.getCount());
 		if ("natalie".equals(username) && "1234".equals(password)) {
 			loginUser.setUsername(username);
 			return true;
