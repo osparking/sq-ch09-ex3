@@ -40,10 +40,11 @@ public class LoginController {
 		String returnUrl = "login.html";
 		if (loginProcessor.processLogin(username, password)) {
 			redAttr.addFlashAttribute("message", "로그인 성공");
-			returnUrl = "redirect:/main";
+			returnUrl = "main";
 		} else {
 			page.addAttribute("message", "로그인 실패");
 		}
+		page.addAttribute("loginCount", loginCount.getCount());
 		logger.info("누적 로그인 횟수: " + loginCount.getCount());
 		return returnUrl;
 	}
