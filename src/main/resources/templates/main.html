@@ -6,6 +6,9 @@
 </head>
 <body>
 <h1>환영합니다.<span th:text="${username}">(사용자명)</span></h1>
-<a href="logout">로그아웃</a>
+	<p>
+		당신은 전체 누적 <span th:text="${loginCount}"></span> 번째로 로그인 시도한 것입니다.
+	</p>
+	<a href="logout">로그아웃</a>
 </body>
 </html>
